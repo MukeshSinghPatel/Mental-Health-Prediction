@@ -1,0 +1,90 @@
+body {
+    background-image: url('images3.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, .8); /* Slightly less transparent for better readability */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* text-align: center; */
+}
+
+h1 {
+    text-align: center;
+    color: #1808c3; /* Matching the button color */
+}
+
+form {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+/* 
+.btn-large {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4564d4;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+} */
+
+.btn-large:hover {
+    background-color: #e61313;
+}
+
+#predictionResult {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgba(230, 230, 250, 0.9); /* Light purple background */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#predictionResult h3 {
+    margin: 0;
+    padding: 10px;
+    font-size: 20px;
+    color: #973636;
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #38316a;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #e61300;
+}
+
+#btn-reset,.btn-large{
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #3d2bc2;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#btn-reset:hover{
+    background-color: #dd2a12;
+}
+

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script>
+    function updateHiddenValue(optionId) {
+        // Update the corresponding hidden input value
+        var hiddenInput = document.getElementById(optionId);
+        if(hiddenInput) {
+            hiddenInput.value = "1"; 
+            console.log("hello world")
+        } else {
+            console.error("No hidden input found with ID: " + optionId);
+        }
+      }
+    </script>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <title>Mental Health Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Mental Health Prediction</h1>
+      <form id="predictionForm" action="/predict" method="post">
+          
+      <input type="hidden" name="const" value="1">
+      <label for="age">Age:</label>
+      <input type="text" id="age" name="age" required><br><hr>
+
+      <label for="gender">Gender:</label>
+      <input type="hidden" name="gender_male" id="gender_male" value="0">
+      <input type="hidden" name="gender_other" id="gender_other" value="0">
+      <input type="radio" id="gender_male" name="gender" value=" " required onclick="updateHiddenValue('gender_male')">
+      <label for="gender_male">Male</label>
+      <input type="radio" id="gender_female" name="gender" value=" " required >
+      <label for="gender_female">Female</label>
+      <input type="radio" id="gender_other" name="gender" value=" " required onclick="updateHiddenValue('gender_other')">
+      <label for="gender_other">Other</label><br><hr>
+
+      <label for="self_employed">Self Employed:</label>
+      <input type="radio" id="self_employed_yes" name="self_employed" required value="1">
+      <label for="self_employed_yes">Yes</label>
+      <input type="radio" id="self_employed_no" name="self_employed" required value="0">
+      <label for="self_employed_no">No</label><br><hr>
+
+      <label for="family_history">Family_History</label>
+      <input type="radio" id="Family_History_yes" name="family_history" required value="1">
+      <label for="family_history_yes">Yes</label>
+      <input type="radio" id="family_history_no" name="family_history" required value="0">
+      <label for="family_history_no">No</label>
+      <br><hr>
+        <label for="Work_Interfere">Work_Interfere:</label>
+        <input type="hidden" name="Work_Interfere_Often" id="Work_Interfere_Often" value="0">
+        <input type="hidden" name="Work_Interfere_Rarely" id="Work_Interfere_Rarely" value="0">
+        <input type="hidden" name="Work_Interfere_Sometimes" id="Work_Interfere_Sometimes" value="0">
+        <input type="radio" id="often_radio" name="Work_Interfere" required onclick="updateHiddenValue('Work_Interfere_Often')" value=" ">
+        <label for="often_radio">Often</label>
+        <input type="radio" id="rarely_radio" name="Work_Interfere" required onclick="updateHiddenValue('Work_Interfere_Rarely')" value=" ">
+        <label for="rarely_radio">Rarely</label>
+        <input type="radio" id="sometimes_radio" name="Work_Interfere" required onclick="updateHiddenValue('Work_Interfere_Sometimes')" value=" ">
+        <label for="sometimes_radio">Sometimes</label>
+        <input type="radio" id="sometimes_radio_never" name="Work_Interfere" required value=" ">
+        <label for="sometimes_radio_never">Never</label>
+        <br><hr>
+
+              <label for="count">Employee Count:</label>
+              <input type="hidden" name="count3" id="count3" value="0">
+              <input type="hidden" name="count2" id="count2" value="0">
+              <input type="hidden" name="count4" id="count4" value="0">
+              <input type="hidden" name="count1" id="count1" value="0">
+              <input type="hidden" name="count5" id="count5" value="0">
+              <input type="radio" id="radio0" name="count" value=" " required>
+              <label for="radio0">1-5</label>
+              <input type="radio" id="radio1" name="count" value=" " required onclick="updateHiddenValue('count1')">
+              <label for="radio1">6-25</label>
+              <input type="radio" id="radio2" name="count" value=" " required onclick="updateHiddenValue('count2')">
+              <label for="radio2">26-100</label>
+              <input type="radio" id="radio3" name="count" value=" " required onclick="updateHiddenValue('count3')">
+              <label for="radio3">100-500</label>
+              <input type="radio" id="radio4" name="count" value=" " required onclick="updateHiddenValue('count4')">
+              <label for="radio4">500-1000</label>
+              <input type="radio" id="radio5" name="count" value=" " required onclick="updateHiddenValue('count5')">
+              <label for="radio5">More than 1000</label><br><hr>
+
+              <label for="remote_work">Remote Work:</label>
+              <input type="radio" id="remote_work_yes" required name="remote_work" value="1">
+              <label for="remote_work_yes">Yes</label>
+              <input type="radio" id="remote_work_no" required name="remote_work" value="0">
+              <label for="remote_work_no">No</label><br><hr>
+              
+              <label for="tech_company">Tech Company:</label>
+              <input type="radio" id="tech_company_yes" required name="tech_company" value="1">
+              <label for="tech_company_yes">Yes</label>
+              <input type="radio" id="tech_company_no" required name="tech_company" value="0">
+              <label for="tech_company_no">No</label><br><hr>
+              
+              <label for="benifits">Benefits:</label>
+              <input type="hidden" name="benefits_no" id="benefits_no" value="0">
+              <input type="hidden" name="benefits_yes" id="benefits_yes" value="0">
+              <input type="radio" id="benifits_yes" name="benifits" value=" " required onclick="updateHiddenValue('benefits_yes')">
+              <label for="benifits_yes">Yes</label>
+              <input type="radio" id="benifits_no" name="benifits" value=" " required onclick="updateHiddenValue('benefits_no')">
+              <label for="benifits_no">No</label>
+              <input type="radio" id="benifits_don'tKnow" name="benifits" value=" " required>
+              <label for="benifits_don'tKnow">Don't Know</label>
+              <br><hr>
+              
+              <label for="care_option">Care Option:</label>
+              <input type="hidden" name="care_option_no" id="care_option_no" value="0">
+              <input type="hidden" name="care_option_yes" id="care_option_yes" value="0">
+              <input type="radio" id="care_option_yes" name="care_option" value=" " required onclick="updateHiddenValue('care_option_yes')">
+              <label for="care_option_yes">Yes</label>
+              <input type="radio" id="care_option_no" name="care_option" value=" " required onclick="updateHiddenValue('care_option_no')">
+              <label for="care_option_no">No</label>
+              <input type="radio" id="care_option_don'tKnow" name="care_option" value=" " required>
+              <label for="care_option_don'tKnow">Not sure</label>
+              <br><hr>
+              
+              <label for="wellness_program">Wellness-Program:</label>
+              <input type="hidden" name="wellness_program_no" id="wellness_program_no" value="0">
+              <input type="hidden" name="wellness_program_yes" id="wellness_program_yes" value="0">
+              <input type="radio" id="wellness_program_yes" name="wellness_program" required value=" " onclick="updateHiddenValue('wellness_program_yes')">
+              <label for="wellness_program_yes">Yes</label>
+              <input type="radio" id="wellness_program_no" name="wellness_program" required value=" " onclick="updateHiddenValue('wellness_program_no')">
+              <label for="wellness_program_no">No</label>
+              <input type="radio" id="wellness_program_don'tKnow" name="wellness_program" required value=" ">
+              <label for="wellness_program_don'tKnow">Don't Know</label>
+              <br><hr>
+              
+              <label for="seek_help">Seek Help:</label>
+              <input type="hidden" name="seek_help_no" id="seek_help_no" value="0">
+              <input type="hidden" name="seek_help_yes" id="seek_help_yes" value="0">
+              <input type="radio" id="seek_help_yes" name="seek_help" value=" " required onclick="updateHiddenValue('seek_help_yes')">
+              <label for="seek_help_yes">Yes</label>
+              <input type="radio" id="seek_help_no" name="seek_help" value=" " required onclick="updateHiddenValue('seek_help_no')">
+              <label for="seek_help_no">No</label>
+              <input type="radio" id="seek_help_don'tKnow" name="seek_help" value=" " required>
+              <label for="seek_help_don'tKnow">Don't Know</label>
+              <br><hr>
+              
+              <label for="anonymity">Anonymity:</label>
+              <input type="hidden" name="anonymity_no" id="anonymity_no" value="0">
+              <input type="hidden" name="anonymity_yes" id="anonymity_yes" value="0">
+              <input type="radio" id="anonymity_yes" name="anonymity" required value=" " onclick="updateHiddenValue('anonymity_yes')">
+              <label for="anonymity_yes">Yes</label>
+              <input type="radio" id="anonymity_no" name="anonymity" required value=" " onclick="updateHiddenValue('anonymity_no')">
+              <label for="anonymity_no">No</label>
+              <input type="radio" id="anonymity_don't_know" name="anonymity" required value=" ">
+              <label for="anonymity_don't_know">Don't Know</label>
+              <br><hr>
+              
+              <label for="medical-leave">Medical-Leave:</label>
+              <input type="hidden" name="medical_leave_difficult" id="medical_leave_difficult" value="0">
+              <input type="hidden" name="medical_leave_easy" id="medical_leave_easy" value="0">
+              <input type="hidden" name="medical_leave_very_difficult" id="medical_leave_very_difficult" value="0">
+              <input type="hidden" name="medical_leave_very_easy" id="medical_leave_very_easy" value="0">
+              
+              <input type="radio" id="difficult_radio" name="medical_leave" value=" " required onclick="updateHiddenValue('medical_leave_difficult')">
+              <label for="difficult_radio">Difficult</label>
+              <input type="radio" id="easy_radio" name="medical_leave" value=" " required onclick="updateHiddenValue('medical_leave_easy')">
+              <label for="easy_radio">Easy</label>
+              <input type="radio" id="very_difficult_radio" name="medical_leave" value=" " required onclick="updateHiddenValue('medical_leave_very_difficult')">
+              <label for="very_difficult_radio">Very Difficult</label>
+              <input type="radio" id="very_easy_radio" name="medical_leave" value=" " required onclick="updateHiddenValue('medical_leave_very_easy')">
+              <label for="very_easy_radio">Very Easy</label>
+              <input type="radio" id="very_don't_know" name="medical_leave" value=" " required>
+              <label for="very_don't_know">Don't Know</label>
+              <br><hr>
+              
+              <label for="mental_health_consequences">Mental Health Consequences:</label>
+              <input type="hidden" name="mental_health_consequences_no" id="mental_health_consequences_no" value="0">
+              <input type="hidden" name="mental_health_consequences_yes" id="mental_health_consequences_yes" value="0">
+              <input type="radio" id="mental_health_consequences_yes_radio" name="mental_health_consequences" value=" " required onclick="updateHiddenValue('mental_health_consequences_yes')">
+              <label for="mental_health_consequences_yes_radio">Yes</label>
+              <input type="radio" id="mental_health_consequences_no_radio" name="mental_health_consequences" value=" " required onclick="updateHiddenValue('mental_health_consequences_no')">
+              <label for="mental_health_consequences_no_radio">No</label>
+              <input type="radio" id="mental_health_consequences_don't_know" name="mental_health_consequences" value=" " required>
+              <label for="mental_health_consequences_don't_know">May be</label>
+              <br><hr>
+
+              <label for="physical_health_consequences">Physical Health Consequences:</label>
+              <input type="hidden" name="physical_health_consequences_no" id="physical_health_consequences_no" value="0">
+              <input type="hidden" name="physical_health_consequences_yes" id="physical_health_consequences_yes" value="0">
+              <input type="radio" id="physical_health_consequences_yes_radio" name="physical_health_consequences" value=" " required onclick="updateHiddenValue('physical_health_consequences_yes')">
+              <label for="physical_health_consequences_yes_radio">Yes</label>
+              <input type="radio" id="physical_health_consequences_no_radio" name="physical_health_consequences" value=" " required onclick="updateHiddenValue('physical_health_consequences_no')">
+              <label for="physical_health_consequences_no_radio">No</label>
+              <input type="radio" id="physical_health_consequences_don't_know" name="physical_health_consequences" value=" " required>
+              <label for="physical_health_consequences_don't_know">May be</label>
+              <br><hr>
+
+              <label for="co-workers_reach">Co-Workers Reach:</label>
+              <input type="hidden" name="co-workers_reach_no" id="co-workers_reach_no" value="0">
+              <input type="hidden" name="co-workers_reach_yes" id="co-workers_reach_yes" value="0">
+              <input type="radio" id="co-workers_reach_yes_radio" name="co-workers_reach" value=" " required onclick="updateHiddenValue('co-workers_reach_yes')">
+              <label for="co-workers_reach_yes_radio">Yes</label>
+              <input type="radio" id="co-workers_reach_no_radio" name="co-workers_reach" value=" " required onclick="updateHiddenValue('co-workers_reach_no')">
+              <label for="co-workers_reach_no_radio">No</label>
+              <input type="radio" id="co-workers_reach_don't_know" name="co-workers_reach" value=" " required>
+              <label for="co-workers_reach_don't_know">Some of them</label>
+              <br><hr>
+
+              <label for="supervisor_reach">Supervisor Reach:</label>
+              <input type="hidden" name="supervisor_reach_no" id="supervisor_reach_no" value="0">
+              <input type="hidden" name="supervisor_reach_yes" id="supervisor_reach_yes" value="0">
+              <input type="radio" id="supervisor_reach_yes_radio" name="supervisor_reach" value=" " required onclick="updateHiddenValue('supervisor_reach_yes')">
+              <label for="supervisor_reach_yes_radio">Yes</label>
+              <input type="radio" id="supervisor_reach_no_radio" name="supervisor_reach" value=" " required onclick="updateHiddenValue('supervisor_reach_no')">
+              <label for="supervisor_reach_no_radio">No</label>
+              <input type="radio" id="supervisor_reach_don't_know" name="supervisor_reach" value=" " required>
+              <label for="supervisor_reach_don't_know">Some of them</label>
+              <br><hr>
+
+              <label for="mental_health_interview">Mental Health Interview:</label>
+              <input type="hidden" name="mental_health_interview_no" id="mental_health_interview_no" value="0">
+              <input type="hidden" name="mental_health_interview_yes" id="mental_health_interview_yes" value="0">
+              <input type="radio" id="mental_health_interview_yes_radio" name="mental_health_interview" value=" " required onclick="updateHiddenValue('mental_health_interview_yes')">
+              <label for="mental_health_interview_yes_radio">Yes</label>
+              <input type="radio" id="mental_health_interview_no_radio" name="mental_health_interview" value=" " required onclick="updateHiddenValue('mental_health_interview_no')">
+              <label for="mental_health_interview_no_radio">No</label>
+              <input type="radio" id="mental_health_interview_don't_know" name="mental_health_interview" value=" " required>
+              <label for="mental_health_interview_don't_know">May be</label>
+              <br><hr>
+
+              <label for="physical_health_interview">Physical Health Interview:</label>
+              <input type="hidden" name="physical_health_interview_no" id="physical_health_interview_no" value="0">
+              <input type="hidden" name="physical_health_interview_yes" id="physical_health_interview_yes" value="0">
+              <input type="radio" id="physical_health_interview_yes_radio" name="physical_health_interview" value=" " required onclick="updateHiddenValue('physical_health_interview_yes')">
+              <label for="physical_health_interview_yes_radio">Yes</label>
+              <input type="radio" id="physical_health_interview_no_radio" name="physical_health_interview" value=" " required onclick="updateHiddenValue('physical_health_interview_no')">
+              <label for="physical_health_interview_no_radio">No</label>
+              <input type="radio" id="physical_health_interview_don't_know" name="physical_health_interview" value=" " required>
+              <label for="physical_health_interview_don't_know">May be</label>
+              <br><hr>
+
+              <label for="mental_physical_interview">Mental_VS_Physical Interview:</label>
+              <input type="hidden" name="mental_physical_interview_no" id="mental_physical_interview_no" value="0">
+              <input type="hidden" name="mental_physical_interview_yes" id="mental_physical_interview_yes" value="0">
+              <input type="radio" id="mental_physical_interview_yes_radio" name="mental_physical_interview" value=" " required onclick="updateHiddenValue('mental_physical_interview_yes')">
+              <label for="mental_physical_interview_yes_radio">Yes</label>
+              <input type="radio" id="mental_physical_interview_no_radio" name="mental_physical_interview" value=" " required onclick="updateHiddenValue('mental_physical_interview_no')">
+              <label for="mental_physical_interview_no_radio">No</label>
+              <input type="radio" id="mental_physical_interview_don't_know" name="mental_physical_interview" value=" " required>
+              <label for="mental_physical_interview_don't_know">Don't Know</label>
+              <br><hr>
+
+              <label for="observe_consequence_workplaces">Observe Consequence Workplace:</label>
+              <input type="radio" id="observe_consequence_workplace_yes" name="observe_consequence_workplace" required value="1">
+              <label for="observe_consequence_workplace_yes">Yes</label>
+              <input type="radio" id="observe_consequence_workplace_no" name="observe_consequence_workplace" required value="0">
+              <label for="observe_consequence_workplace_no">No</label><br><hr>
+              <button type="submit" class="btn-large waves-effect waves-light orange">Predict Probability</button>
+              <button type="reset" id="btn-reset">Reset Data</button><br><hr>
+      </form>
+      <div id="predictionResult">
+        <h3>{{pred}}</h3>
+      </div ><div>
+        For new prediction <a href="{{ url_for('home') }}">Click Here</a>
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
